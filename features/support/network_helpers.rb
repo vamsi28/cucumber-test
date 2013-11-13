@@ -1,5 +1,4 @@
 class Network
-
   def initialize(browser)
     @browser = browser
   end
@@ -19,15 +18,16 @@ class Network
   def do_logout
     @browser.goto url
     begin
-      element_to_wait .wait_until_present(1)
+      elem_present_not_logged_in_page.wait_until_present(1)
     rescue
       logout = button_logout
       logout.when_present(3).click
-      element_to_wait.wait_until_present(1)
+      elem_present_not_logged_in_page.wait_until_present(1)
     end
   end
 
 private
+
   def select_login_popup
     popup = login_window
     popup.wait_until_present(3)
@@ -39,12 +39,11 @@ private
     field_password.set password
     button_login.click
   end
-
 end
 
 class Facebook < Network
   def gd_login_button(browser)
-    browser.link :class => "gd-login-facebook"
+    browser.link :class => 'gd-login-facebook'
   end
 
   def login_window
@@ -64,23 +63,25 @@ class Facebook < Network
   end
 
   def url
-    "https://www.facebook.com"
+    'https://www.facebook.com'
   end
 
-  def element_to_wait
+protected
+
+  def elem_present_not_logged_in_page
     @browser.element :id => 'loginbutton'
   end
 
   def button_logout
-    settings = @browser.a :id => 'navAccountLink'
-    settings.when_present(3).click
-    @browser.element(:css => "#logout_form input[type='submit']")
+    account_settings_btn = @browser.a :id => 'navAccountLink'
+    account_settings_btn.when_present(3).click
+    @browser.element :css => "#logout_form input[type='submit']"
   end
 end
 
 class LinkedIn < Network
   def gd_login_button(browser)
-    browser.link :class => "gd-login-linked-in"
+    browser.link :class => 'gd-login-linked-in'
   end
 
   def login_window
@@ -100,17 +101,18 @@ class LinkedIn < Network
   end
 
   def url
-    "https://www.linkedin.com"
+    'https://www.linkedin.com'
   end
 
-  def element_to_wait
+protected
+
+  def elem_present_not_logged_in_page
     @browser.element :id => 'signin'
   end
 
   def button_logout
-    settings = @browser.a(:class => 'account-toggle')
-    settings.when_present(3).hover
-    logout = @browser.element(:class => "account-submenu-split-link")
+    account_settings_btn = @browser.a :class => 'account-toggle'
+    account_settings_btn.when_present(3).hover
+    logout = @browser.element :class => 'account-submenu-split-link'
   end
-
 end

@@ -9,7 +9,7 @@ cucumber-test
 
 ## How to run
 
-```
+```sh
 $ bundle
 $ rake features
 ```
