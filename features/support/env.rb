@@ -1,7 +1,7 @@
 require 'watir-webdriver'
 
 Before do
-  API_EXAMPLE_CLIENT_URL ||= 'https://api-example-client.intenthq.com/'
+  PLUGIN_BUILDER_URL ||= 'https://api-example-client.intenthq.com/'
 end
 
 module HasBrowser

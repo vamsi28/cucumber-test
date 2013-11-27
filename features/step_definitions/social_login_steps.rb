@@ -4,7 +4,7 @@ Given /^I am logged out from "([^"]+)"$/ do |network_name|
 end
 
 Given /^I am not logged in the platform$/ do
-  browser.goto API_EXAMPLE_CLIENT_URL
+  browser.goto PLUGIN_BUILDER_URL
   login = browser.a :class => 'gd-login-facebook'
   begin
     login.wait_until_present(2)
@@ -15,8 +15,8 @@ Given /^I am not logged in the platform$/ do
   end
 end
 
-Given /^I am on the admin api-example-client page$/ do
-	browser.goto API_EXAMPLE_CLIENT_URL
+Given /^I am on the plugin builder$/ do
+	browser.goto PLUGIN_BUILDER_URL
 end
 
 When /^I login in the platform using "([^"]+)", "([^"]+)" and "([^"]+)"$/ do |network_name, email, password|
