@@ -13,7 +13,7 @@ Here is an example scenario that covers some of the functionality on the [plugin
 Feature: Social Login
 
   Scenario Outline: As a logged out user I want to login in IntentHQ platform using different social networks
-    Given I am logged out from "<network>"
+    Given I am not logged in "<network>"
     And I am not logged in the platform
     And I am on the plugin builder
     When I login in the platform using "<network>", "<email>" and "<password>"
@@ -31,6 +31,8 @@ You should do some exploratory testing of the different plugins, with the aim to
 - Create some example scenarios that cover the testing of the plugins
 - Automate a minimum of two scenarios
 - Provide any assumptions you've made
+
+You will need to submit all the files in one compressed file (zip, tar.gz...) or a link to a github repo.
 
 ## Requisites
 - rbenv + ruby-build (https://github.com/sstephenson/rbenv)

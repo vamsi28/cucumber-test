@@ -1,4 +1,4 @@
-Given /^I am logged out from "([^"]+)"$/ do |network_name|
+Given /^I am not logged in "([^"]+)"$/ do |network_name|
   network = Network::instance_of(network_name, browser)
   network.do_logout
 end
